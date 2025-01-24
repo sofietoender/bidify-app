@@ -1,4 +1,5 @@
 // navbar.js
+import "./style.css";
 export function loadNavbar(containerId) {
 	const navbarHtml = `
         <nav>
