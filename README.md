@@ -1,1 +1,0 @@
-# bidify-app
