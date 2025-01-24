@@ -1,11 +1,8 @@
 module.exports = {
 	content: [
 		"./index.html",
-		"./src/**/*.{html,js,ts}", // Sørger for at all JS i src inkluderes
-		"!./node_modules/**/*",
-		"./**/*.js",
-		"./**/*.mjs",
-		"./**/*.html",
+		"./src/**/*.{html,js,ts}",
+		"./**/*.html", // Ensure all HTML files are included
 	],
 	theme: {
 		extend: {
