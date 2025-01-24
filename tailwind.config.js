@@ -1,9 +1,10 @@
 module.exports = {
 	content: [
 		"./index.html",
-		"./src/**/*.{html,js,ts,mjs}", // Include .mjs in the src directory
-		"./**/*.html", // Ensure all HTML files are included
-		"./**/*.js", // Include all JS files
+		"./src/**/*.{html,js,ts,mjs}",
+		"./**/*.html", // Ensure this includes all HTML files
+		"./**/*.js", // Ensure this includes all JS files
+		"./**/*.mjs", // Ensure this includes all MJS files
 		"!./node_modules/**/*", // Exclude node_modules
 	],
 	theme: {
