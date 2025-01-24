@@ -7,17 +7,65 @@
 		<title>Vite App</title>
 	</head>
 	<body>
-		<ul>
-			<li>
-				<h1><a href="auctions/index.html">All listings</a></h1>
-			</li>
-			<li>
-				<h1><a href="auctions/newListing/index.html">Create new listing</a></h1>
-			</li>
-			<li>
-				<h1><a href="auctions/listings/index.html">Listings</a></h1>
-			</li>
-		</ul>
+		<nav>
+			<div class="mx-auto flex max-w-7xl items-center justify-between border-solid border-b-red p-3">
+				<!-- Logo -->
+				<a href="#" class="text-xl font-bold text-red">Bidify</a>
+
+				<!-- Meny for mobile -->
+				<div class="block lg:hidden">
+					<button id="menuButton" class="">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</button>
+				</div>
+
+				<!-- Meny for desktop -->
+				<div class="hidden space-x-4 lg:flex">
+					<a href="auctions/index.html" class="px-3 py-2 text-customblack">All auctions</a>
+					<a href="#" class="px-3 py-2 text-customblack">Profile</a>
+				</div>
+			</div>
+
+			<!-- Mobil meny -->
+			<div id="mobileMenu" class="hidden p-4 lg:hidden">
+				<a href="#" class="block rounded-md px-3 py-2 text-customblack">All auctions</a>
+				<a href="#" class="block rounded-md px-3 py-2 text-customblack">Profile</a>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<section id="hero" class="hero">
+			<div class="hero-content m-7">
+				<p class="text-xs text-brown">Find your next treasure or sell with ease.</p>
+				<h1 class="mt-2 font-semibold text-customblack">Your Auction, Simplified. The marketplace where unique meets ready-to-sell.</h1>
+				<div class="mt-4">
+					<button class="mr-5 w-32 rounded-md bg-red p-3 text-center text-xs font-medium text-beige text-white">Explore Now</button>
+					<button class="w-32 rounded-md bg-white p-3 text-center text-xs font-medium text-brown">Create</button>
+				</div>
+			</div>
+		</section>
+
+		<main class="m-9">
+			<h2 class="mb-3 text-xl font-semibold">Ending Soon</h2>
+
+			<!-- auctions ending soon-->
+			<div class="w-60 overflow-hidden rounded-md border border-sky-500 bg-white">
+				<img src="https://images.unsplash.com/photo-1652536161402-533bf82822bf?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+				<p class="text-red">Vintage Wheels Pro 8</p>
+				<hr class="my-4 border-t-2 border-dotted border-gray" />
+				<div class="flex items-center justify-between p-2 text-center">
+					<div>
+						<p>Enda mere tekst</p>
+						<p>Masse mere tekst</p>
+					</div>
+					<p class="h-5 content-center rounded-full bg-brown p-2 align-middle text-[12px] text-xs text-white">$ 500</p>
+				</div>
+			</div>
+
+			<h2 class="mb-3 text-xl font-semibold">Newest Autions</h2>
+		</main>
 
 		<script type="module" src="/src/main.js"></script>
 	</body>
