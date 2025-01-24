@@ -1,5 +1,9 @@
 module.exports = {
-	content: ["./**/*.{html,js,ts}", "!./node_modules/**/*"],
+	content: [
+		"./index.html",
+		"./src/**/*.{html,js,ts}", // Sørger for at all JS i src inkluderes
+		"!./node_modules/**/*",
+	],
 	theme: {
 		extend: {
 			colors: {
