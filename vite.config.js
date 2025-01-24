@@ -6,7 +6,7 @@ export default {
 				auctions: "auctions/index.html",
 				listings: "auctions/listings/index.html",
 				createListing: "auctions/newListing/index.html",
-				profile: "auth/profile/index.html",
+				profile: "auth/profile/",
 				login: "auth/login/index.html",
 				register: "auth/login/index.html",
 			},
