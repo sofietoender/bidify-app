@@ -1,11 +1,13 @@
 module.exports = {
 	content: [
-		"./index.html",
-		"./src/**/*.{html,js,ts}", // Sørger for at all JS i src inkluderes
-		"!./node_modules/**/*",
-		"./**/*.js",
-		"./**/*.mjs",
+		"./index.html", // Includes the main index file
+		"./**/index.html", // Includes any other index.html files in subdirectories
+		"./src/**/*.{html,js,ts}", // Ensures JS files in src are included for styling
+		"!./node_modules/**/*", // Excludes node_modules
+		"./**/*.js", // Includes all JS files in the project
+		"./**/*.mjs", // Includes all MJS files in the project
 	],
+
 	theme: {
 		extend: {
 			colors: {
