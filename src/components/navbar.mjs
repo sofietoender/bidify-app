@@ -15,7 +15,7 @@ export function loadNavbar(containerId) {
 	const navbarHtml = `
         <nav>
             <div class="mx-auto flex max-w-7xl items-center justify-between border-solid border-b-red p-3">
-                <a href="/index.html" class="text-xl font-bold text-red">Bidify</a>
+                <a href="/index.html" class="text-xl font-bold text-blue-700">Bidify</a>
                 <div class="block lg:hidden">
                     <button id="menuButton">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
