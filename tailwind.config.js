@@ -1,5 +1,6 @@
 module.exports = {
 	content: [
+		"./index.html",
 		"./src/**/*.{html,js,ts}", // Sørger for at all JS i src inkluderes
 		"!./node_modules/**/*",
 		"./**/*.js",
