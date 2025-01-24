@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body class="bg-beige">
+		<main class="m-9">
+			<section class="bg-gray-50">
+				<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+					<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+						<h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-customblack">Create an account</h2>
+					</div>
+
+					<div class="mt-10 rounded-lg bg-white p-8 shadow-md sm:mx-auto sm:w-full sm:max-w-sm">
+						<form class="space-y-6" action="#" id="registerForm">
+							<div id="message"></div>
+							<div>
+								<label for="name" class="block text-sm font-medium text-customblack">Your name</label>
+								<div class="mt-2">
+									<input
+										type="text"
+										name="name"
+										id="name"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										placeholder="Your name"
+										required
+									/>
+								</div>
+							</div>
+							<div>
+								<label for="email" class="block text-sm font-medium text-customblack">Your email</label>
+								<div class="mt-2">
+									<input
+										type="email"
+										name="email"
+										id="email"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										placeholder="name@company.com"
+										pattern="^[^@]+@(stud\.|)(noroff\.no)$"
+										title="Please provide a noroff.no or stud.noroff.no email address"
+										required
+									/>
+								</div>
+							</div>
+							<div>
+								<label for="password" class="block text-sm font-medium text-customblack">Password</label>
+								<div class="mt-2">
+									<input
+										type="password"
+										name="password"
+										id="password"
+										placeholder="••••••••"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										required
+									/>
+								</div>
+							</div>
+							<div>
+								<label for="bio" class="block text-sm font-medium text-customblack">Bio</label>
+								<div class="mt-2">
+									<textarea
+										name="bio"
+										id="bio"
+										rows="4"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										placeholder="Write your bio here"
+									></textarea>
+								</div>
+							</div>
+							<div>
+								<label for="url" class="block text-sm font-medium text-customblack">Avatar URL</label>
+								<div class="mt-2">
+									<input
+										type="url"
+										name="avatarUrl"
+										id="avatarUrl"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										placeholder="https://example.com"
+									/>
+								</div>
+							</div>
+							<div class="flex items-start">
+								<div class="flex h-5 items-center">
+									<input
+										id="terms"
+										aria-describedby="terms"
+										type="checkbox"
+										class="border-gray-300 bg-gray-50 focus:ring-3 h-4 w-4 rounded border accent-customblack focus:ring-red"
+										required
+										minlength="8"
+									/>
+								</div>
+								<div class="ml-3 text-sm">
+									<label for="terms" class="text-gray-500 font-light">
+										I accept the
+										<a class="text-red-600 font-medium hover:underline" href="#">Terms and Conditions</a>
+									</label>
+								</div>
+							</div>
+							<button
+								type="submit"
+								class="flex w-full justify-center rounded-md bg-red px-3 py-1.5 text-sm font-semibold text-beige shadow-sm hover:bg-brown focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+							>
+								Create an account
+							</button>
+							<p class="mt-10 text-center text-sm text-gray">
+								Already have an account?
+								<a href="/index.html" class="font-semibold text-red hover:text-brown">Login here</a>
+							</p>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
