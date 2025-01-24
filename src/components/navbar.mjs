@@ -3,7 +3,7 @@ export function loadNavbar(containerId) {
 	const navbarHtml = `
         <nav>
             <div class="mx-auto flex max-w-7xl items-center justify-between border-solid border-b-red p-3">
-                <a href="index.html" class="text-xl font-bold text-red">Bidify</a>
+                <a href="/index.html" class="text-xl font-bold text-red">Bidify</a>
                 <div class="block lg:hidden">
                     <button id="menuButton">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -18,8 +18,8 @@ export function loadNavbar(containerId) {
                 </div>
             </div>
             <div id="mobileMenu" class="hidden p-4 lg:hidden">
-                <a href="#" class="block rounded-md px-3 py-2 text-customblack">All auctions</a>
-                <a href="#" class="block rounded-md px-3 py-2 text-customblack">Profile</a>
+                <a href="/auctions/index.html" class="block rounded-md px-3 py-2 text-customblack">All auctions</a>
+                <a href="/auth/profile/index.html" class="block rounded-md px-3 py-2 text-customblack">Profile</a>
             </div>
         </nav>
     `;
