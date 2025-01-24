@@ -2,6 +2,7 @@ module.exports = {
 	content: [
 		"./index.html",
 		"./src/**/*.{html,js,ts,mjs}",
+		"./auth/**/*.{html,js}", // Add paths for other folders like /auth
 		"./**/*.html", // Ensure this includes all HTML files
 		"./**/*.js", // Ensure this includes all JS files
 		"./**/*.mjs", // Ensure this includes all MJS files
