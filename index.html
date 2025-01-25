@@ -28,6 +28,28 @@
 		<main class="m-9">
 			<h2 class="mb-3 text-xl font-semibold">Listings</h2>
 
+			<div class="flex flex-col sm:flex-row justify-between max-w mt-10 mb-10 gap-4">
+				<!-- Dropdown Filter -->
+				<div class="">
+					<select class="w-full sm:w-40 px-4 py-2 border border-gray rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brown focus:border-brown">
+						<option value="newest">Newest</option>
+						<option value="oldest">Oldest</option>
+					</select>
+				</div>
+
+				<!-- Search Input -->
+				<div class="relative">
+					<input type="text" placeholder="Search..." class="w-full pl-10 pr-4 py-2 border border-gray rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-beige focus:border-beige" />
+					<div class="absolute inset-y-0 right-2 flex items-center pl-3 pointer-events-none">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M11 4a7 7 0 1 1-4.9 11.9l-4.3 4.3a1 1 0 0 1-1.4-1.4l4.3-4.3A7 7 0 0 1 11 4z" />
+						</svg>
+					</div>
+				</div>
+			</div>
+
+			<!--Litings container-->
+
 			<div id="listings-container" class="flex flex-wrap"></div>
 		</main>
 	</body>
