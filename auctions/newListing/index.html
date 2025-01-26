@@ -1,13 +1,105 @@
 <!doctype html>
-<html lang="no">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Bidify | Create new listing</title>
+		<title>Create Listing</title>
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
-	<body class="bg-gray-100 text-center p-8">
+	<body class="bg-beige">
 		<div id="navbar-container"></div>
 
+		<main class="m-9">
+			<section class="bg-gray-50">
+				<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+					<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+						<h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-customblack">Create a Listing</h2>
+					</div>
+
+					<div class="mt-10 rounded-lg bg-white p-8 shadow-md sm:mx-auto sm:w-full sm:max-w-sm">
+						<form id="createListingForm" class="space-y-6">
+							<div>
+								<label for="title" class="block text-sm font-medium text-customblack">Title</label>
+								<div class="mt-2">
+									<input
+										type="text"
+										id="title"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										required
+									/>
+								</div>
+							</div>
+
+							<div>
+								<label for="description" class="block text-sm font-medium text-customblack">Description</label>
+								<div class="mt-2">
+									<textarea
+										id="description"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										required
+									></textarea>
+								</div>
+							</div>
+
+							<div>
+								<label for="endsAt" class="block text-sm font-medium text-customblack">Ends At</label>
+								<div class="mt-2">
+									<input
+										type="datetime-local"
+										id="endsAt"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+										required
+									/>
+								</div>
+							</div>
+
+							<div>
+								<label for="tags" class="block text-sm font-medium text-customblack">Tags (comma separated)</label>
+								<div class="mt-2">
+									<input
+										type="text"
+										id="tags"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+									/>
+								</div>
+							</div>
+
+							<div>
+								<label for="media" class="block text-sm font-medium text-customblack">Media URLs (comma separated)</label>
+								<div class="mt-2">
+									<input
+										type="text"
+										id="media"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+									/>
+								</div>
+							</div>
+
+							<div>
+								<label for="alt-text" class="block text-sm font-medium text-customblack">Alt Text for Media (comma separated)</label>
+								<div class="mt-2">
+									<input
+										type="text"
+										id="alt-text"
+										class="block w-full rounded-md bg-beige px-3 py-1.5 text-base text-customblack outline outline-1 outline-offset-1 outline-gray placeholder:text-gray focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-red sm:text-sm"
+									/>
+								</div>
+							</div>
+
+							<div id="message"></div>
+							<button
+								type="submit"
+								class="flex w-full justify-center rounded-md bg-red px-3 py-1.5 text-sm font-semibold text-beige shadow-sm hover:bg-brown focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+							>
+								Create Listing
+							</button>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+
 		<script type="module" src="/src/main.js"></script>
+		<script type="module" src="../../src/api/auth/createListing.js"></script>
 	</body>
 </html>
