@@ -1,13 +1,25 @@
 <!doctype html>
-<html lang="no">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Bidify | Create new listing</title>
+		<title>Listing Detail</title>
 	</head>
-	<body class="bg-gray-100 text-center p-8">
+	<body class="bg-beige">
 		<div id="navbar-container"></div>
 
-		<script type="module" src="/src/main.js"></script>
+		<div id="listings-container"></div>
+
+		<!-- Listing Detail Section -->
+		<main class="m-9">
+			<h2 class="mb-3 text-xl font-semibold">Listing Detail</h2>
+
+			<!-- Listing Detail Container -->
+			<div id="listing-container" class="flex justify-center items-center">
+				<!-- The listing details card will be inserted here dynamically -->
+			</div>
+		</main>
+
+		<script type="module" src="../../src/api/auth/listingDetail.mjs"></script>
 	</body>
 </html>

@@ -6,7 +6,7 @@ export function displayListings(listings) {
 	listingsWrapper.className = "flex gap-6 flex-wrap";
 
 	listings.forEach((listing) => {
-		const { title, media, _count, endsAt } = listing;
+		const { id, title, media, _count, endsAt } = listing; // Use the id from the response
 		const imageUrl = media && media.length > 0 ? media[0].url : "placeholder-image.jpg"; // Fallback image
 		const bidCount = _count?.bids || 0;
 
@@ -19,10 +19,12 @@ export function displayListings(listings) {
 			minute: "2-digit",
 		});
 
-		const card = document.createElement("div");
-		card.className = "w-60 overflow-hidden rounded-md bg-white shadow-md mx-auto";
+		// Create a link element for each listing card
+		const cardLink = document.createElement("a");
+		cardLink.href = `/auctions/listingDetail/index.html?id=${id}`; // Use the listing's ID as a query param
+		cardLink.className = "w-60 overflow-hidden rounded-md bg-white shadow-md mx-auto";
 
-		card.innerHTML = `
+		cardLink.innerHTML = `
             <img src="${imageUrl}" alt="${title}" class="w-full h-40 object-cover" />
             <p class="text-red mt-3 ml-3 text-base font-bold">${title}</p>
             <hr class="my-4 border-t-2 border-dotted border-gray" />
@@ -37,8 +39,10 @@ export function displayListings(listings) {
             </div>
         `;
 
-		listingsWrapper.appendChild(card);
+		// Append the card to the wrapper
+		listingsWrapper.appendChild(cardLink);
 	});
 
+	// Append the wrapper to the container
 	container.appendChild(listingsWrapper);
 }
