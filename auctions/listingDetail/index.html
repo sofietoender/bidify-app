@@ -7,19 +7,12 @@
 	</head>
 	<body class="bg-beige">
 		<div id="navbar-container"></div>
+		<button class="mr-5 w-32 rounded-md bg-red p-3 text-center text-s font-medium text-white">Place bid</button>
+		<div id="listing-detail-container" class="max-w-4xl mx-auto p-6">
+			<!-- Listing details will be injected here -->
+		</div>
 
-		<div id="listings-container"></div>
-
-		<!-- Listing Detail Section -->
-		<main class="m-9">
-			<h2 class="mb-3 text-xl font-semibold">Listing Detail</h2>
-
-			<!-- Listing Detail Container -->
-			<div id="listing-container" class="flex justify-center items-center">
-				<!-- The listing details card will be inserted here dynamically -->
-			</div>
-		</main>
-
+		<script type="module" src="/src/main.js"></script>
 		<script type="module" src="../../src/api/auth/listingDetail.mjs"></script>
 	</body>
 </html>

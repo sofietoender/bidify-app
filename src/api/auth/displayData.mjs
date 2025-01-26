@@ -33,9 +33,7 @@ export function displayListings(listings) {
                     <p class="text-xs text-brown">Bids: ${bidCount}</p>
                     <p class="text-xs font-semibold text-customblack mt-1">${formattedDate}</p>
                 </div>
-                <div class="bg-brown rounded-full p-0.5 w-[55px]">
-                    <p class="text-center font-bold text-[12px] text-white p-0.5">$ ???</p>
-                </div>
+                
             </div>
         `;
 
