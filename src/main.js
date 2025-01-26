@@ -1,14 +1,17 @@
 import "./style.css";
 import { loadNavbar } from "../src/components/navbar.mjs";
-import { fetchData, addSearchListener } from "./api/auth/fetchData.mjs";
-
-loadNavbar("navbar-container");
-fetchData();
+import { fetchData, addSearchListener, addSortListener } from "./api/auth/fetchData.mjs";
 
 document.addEventListener("DOMContentLoaded", async () => {
-	// Hent og vis alle oppføringer ved første last
-	await fetchData();
+	try {
+		// Load the navbar
+		loadNavbar("navbar-container");
 
-	// Aktiver søkefunksjonalitet
-	addSearchListener();
+		// Fetch data and initialize listeners after DOM content is loaded
+		await fetchData();
+		addSearchListener();
+		addSortListener();
+	} catch (error) {
+		console.error("Error during DOMContentLoaded:", error);
+	}
 });
