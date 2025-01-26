@@ -26,15 +26,15 @@ export function loadNavbar(containerId) {
                 <div class="hidden space-x-4 lg:flex">
                  
                     <a href="/auth/profile/index.html" class="px-3 py-2 text-customblack">Profile</a>
-                     <a href="/auth/profile/index.html" class="px-3 py-2 text-customblack">Log in</a>
+                     <a href="/auth/login/index.html" class="px-3 py-2 text-customblack">Log in</a>
                     <a href="/auth/register/index.html" class="px-3 py-2 text-customblack">Register</a>
                 </div>
             </div>
             <div id="mobileMenu" class="hidden p-4 lg:hidden">
                
                 <a href="/auth/profile/index.html" class="block rounded-md px-3 py-2 text-customblack">Profile</a>
-                <a href="/auth/register/index.html" class="block rounded-md px-3 py-2 text-customblack">Register</a>
-                <a href="/auth/login/index.html" class="block rounded-md px-3 py-2 text-customblack">Login</a>
+                <a href="/auth/login/index.html" class="block rounded-md px-3 py-2 text-customblack">Log in</a>
+                <a href="/auth/regsiter/index.html" class="block rounded-md px-3 py-2 text-customblack">Register</a>
             </div>
         </nav>
     `;
