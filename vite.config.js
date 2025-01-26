@@ -8,6 +8,7 @@ export default {
 				profile: "auth/profile/index.html",
 				login: "auth/login/index.html",
 				register: "auth/register/index.html",
+				listingDetail: "auctions/listingDetail/index.html",
 			},
 		},
 	},
