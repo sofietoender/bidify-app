@@ -1,13 +1,73 @@
 <!doctype html>
-<html lang="no">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Bidify | All listings</title>
+		<title>Profile</title>
+		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
 	<body class="bg-beige">
 		<div id="navbar-container"></div>
 
-		<script type="module" src="/src/main.js"></script>
+		<div id="profile-container" class="max-w-4xl mx-auto p-6">
+			<!-- Profile Header -->
+			<div class="flex flex-col items-center pb-10">
+				<div class="relative group">
+					<!-- Banner Image -->
+					<img id="banner" class="w-full h-40 object-cover rounded-lg" src="" alt="Banner Image" />
+					<button id="editBannerBtn" class="absolute top-4 right-4 bg-gray-700 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Edit Banner</button>
+				</div>
+
+				<div id="avatar-container" class="relative group overflow-hidden">
+					<img id="avatar" class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="" alt="User Avatar" />
+					<button id="editAvatarBtn" class="absolute bottom-0 right-0 bg-gray-700 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Change Avatar</button>
+				</div>
+
+				<h5 id="username" class="mb-1 text-xl font-medium text-gray-900 mt-4">User Name</h5>
+				<span id="userBio" class="text-sm text-gray-500">User Bio</span>
+
+				<div class="mt-4">
+					<span class="text-lg font-semibold">Total Credit:</span>
+					<span id="creditAmount" class="text-xl font-medium text-green-600">0</span>
+				</div>
+			</div>
+
+			<!-- User Listings and Wins -->
+			<div class="mt-8">
+				<h2 class="text-xl font-bold mb-4">Your Listings</h2>
+				<div id="userListings" class="flex flex-wrap gap-6">
+					<!-- User listings will be injected here -->
+				</div>
+
+				<h2 class="text-xl font-bold mt-8 mb-4">Your Wins</h2>
+				<div id="userWins" class="flex flex-wrap gap-6">
+					<!-- User wins will be injected here -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for updating banner/avatar/bio -->
+		<div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+			<div class="bg-white p-6 rounded-lg shadow-lg w-96">
+				<h3 id="modalTitle" class="text-xl font-semibold mb-4">Update Image</h3>
+				<label for="imageUrl" class="block text-gray-700">Image URL:</label>
+				<input id="imageUrl" type="url" class="w-full p-2 border border-gray-300 rounded mb-4" placeholder="Enter image URL" />
+
+				<!-- Bio Update -->
+				<div id="bioUpdateContainer" class="hidden">
+					<label for="bio" class="block text-gray-700">Update Bio:</label>
+					<textarea id="bio" class="w-full p-2 border border-gray-300 rounded mb-4" rows="4" placeholder="Enter your new bio"></textarea>
+				</div>
+
+				<div class="flex justify-end">
+					<button id="cancelBtn" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
+					<button id="updateBtn" class="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Link to external JavaScript files -->
+		<script type="module" src="../../src/main.js"></script>
+		<script type="module" src="../../src/api/auth/profile.js"></script>
 	</body>
 </html>

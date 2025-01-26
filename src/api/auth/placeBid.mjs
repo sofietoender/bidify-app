@@ -1,11 +1,15 @@
 const placeBidBtn = document.getElementById("placeBidBtn");
 const loginMessage = document.getElementById("loginMessage");
+const bidAmountInput = document.getElementById("bidAmountInput");
+const bidErrorMessage = document.getElementById("bidErrorMessage");
+const bidSuccessMessage = document.getElementById("bidSuccessMessage");
 
 const accessToken = localStorage.getItem("accessToken");
 const apiKey = "6ec6b26b-2699-4267-a499-2ad741f04936"; // New API key
 
 if (accessToken) {
 	placeBidBtn.classList.remove("hidden");
+	bidAmountInput.classList.remove("hidden");
 } else {
 	loginMessage.classList.remove("hidden");
 }
@@ -22,11 +26,16 @@ placeBidBtn.addEventListener("click", async () => {
 		return;
 	}
 
-	const bidAmount = prompt("Enter your bid amount:");
+	const bidAmount = bidAmountInput.value;
 	if (!bidAmount || isNaN(bidAmount) || bidAmount <= 0) {
-		alert("Please enter a valid bid amount.");
+		bidErrorMessage.textContent = "Please enter a valid bid amount."; // Generic error
+		bidErrorMessage.classList.remove("hidden");
+		bidSuccessMessage.classList.add("hidden"); // Hide success message on error
 		return;
 	}
+
+	// Hide error message when bid is valid
+	bidErrorMessage.classList.add("hidden");
 
 	try {
 		// Make the POST request to place the bid
@@ -40,14 +49,36 @@ placeBidBtn.addEventListener("click", async () => {
 			body: JSON.stringify({ amount: parseFloat(bidAmount) }),
 		});
 
-		if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-
 		const responseData = await response.json();
+
+		// Log the response to check its structure
+		console.log("Response Data:", responseData);
+
+		if (!response.ok) {
+			// Check for API error message and display it
+			const errorMessage = responseData?.errors?.[0]?.message || "An error occurred while placing the bid.";
+			console.log("Error Message:", errorMessage); // Log the error message
+			bidErrorMessage.textContent = errorMessage; // Set the actual error message
+			bidErrorMessage.classList.remove("hidden");
+			bidSuccessMessage.classList.add("hidden"); // Hide success message on error
+			return;
+		}
+
 		console.log("Bid placed successfully:", responseData);
-		alert("Your bid has been placed successfully!");
-		window.location.reload();
+
+		// Show success message
+		bidSuccessMessage.classList.remove("hidden");
+		bidErrorMessage.classList.add("hidden"); // Hide error message if the bid is successful
+
+		// Clear the input field and reload the page after a successful bid
+		bidAmountInput.value = "";
+		setTimeout(() => {
+			window.location.reload();
+		}, 2000); // Wait 2 seconds before reloading
 	} catch (error) {
 		console.error("Error placing bid:", error);
-		alert("Failed to place bid. Please try again.");
+		bidErrorMessage.textContent = "Failed to place bid. Please try again."; // Default error message
+		bidErrorMessage.classList.remove("hidden");
+		bidSuccessMessage.classList.add("hidden"); // Hide success message on error
 	}
 });
