@@ -7,12 +7,24 @@
 	</head>
 	<body class="bg-beige">
 		<div id="navbar-container"></div>
-		<button class="mr-5 w-32 rounded-md bg-red p-3 text-center text-s font-medium text-white">Place bid</button>
+
 		<div id="listing-detail-container" class="max-w-4xl mx-auto p-6">
 			<!-- Listing details will be injected here -->
 		</div>
 
+		<div class="max-w-4xl mx-auto p-6 flex justify-end">
+			<button id="placeBidBtn" class="w-32 rounded-md bg-red p-3 text-center text-s font-medium text-white hidden">Place bid</button>
+			<p id="loginMessage" class="text-red text-sm font-medium hidden">Log in to place a bid.</p>
+		</div>
+
+		<div>
+			<h2 class="text-xl font-bold mt-4 max-w-4xl mx-auto p-">Bids:</h2>
+			<div class="max-w-4xl mx-auto p-6" id="bids-container"></div>
+			<!-- Bids will be injected here -->
+		</div>
+
 		<script type="module" src="/src/main.js"></script>
 		<script type="module" src="../../src/api/auth/listingDetail.mjs"></script>
+		<script type="module" src="../../src/api/auth/placeBid.mjs"></script>
 	</body>
 </html>

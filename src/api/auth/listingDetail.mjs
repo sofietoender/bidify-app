@@ -55,16 +55,16 @@ function displayListingDetails(listing) {
         <div class="flex">
             <!-- Main Image -->
             <div class="flex-1">
-                <img src="${media && media.length > 0 ? media[0].url : "placeholder-image.jpg"}" alt="${title}" class="w-full h-80 object-cover" />
+                <img src="${media && media.length > 0 ? media[0].url : "placeholder-image.jpg"}" alt="${title}" class="w-full border-red border rounded-md h-80 object-cover" />
             </div>
             <!-- Image Gallery -->
-            <div class="flex-1 grid grid-cols-3 gap-2">
+            <div class=" ml-3 flex-1 grid grid-cols-3 gap-2">
                 ${
 									media && media.length > 0
 										? media
 												.map(
 													(image) => `
-                    <img src="${image.url}" alt="${title}" class="w-full h-32 object-cover cursor-pointer" />
+                    <img src="${image.url}" alt="${title}" class="w-full h-32 object-cover rounded-md border border-red cursor-pointer" />
                 `
 												)
 												.join("")
@@ -72,6 +72,8 @@ function displayListingDetails(listing) {
 								}
             </div>
         </div>
+
+		
 
         <h1 class="text-2xl font-bold mt-4">${title}</h1>
         <p class="text-gray-700 mt-2">${description || "No description available."}</p>
@@ -87,10 +89,7 @@ function displayListingDetails(listing) {
                 <p class="text-center font-bold text-[12px] text-white p-0.5">$${highestBidAmount || "N/A"}</p>
             </div>
         </div>
-        <div>
-            <h2 class="text-xl font-bold mt-4">Bids:</h2>
-            <div id="bids-container"></div> <!-- Bids will be injected here -->
-        </div>
+        
     `;
 
 	// Display bids
