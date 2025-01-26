@@ -5,15 +5,14 @@ export function displayListings(listings) {
 	const listingsWrapper = document.createElement("div");
 	listingsWrapper.className = "flex gap-6 flex-wrap";
 
-	const filteredListings = listings.filter((listing) => listing.media && listing.media.length > 0 && listing.media[0].url).slice(0, 10);
-
-	filteredListings.forEach((listing) => {
+	listings.forEach((listing) => {
 		const { title, media, _count, endsAt } = listing;
-		const imageUrl = media[0].url;
+		const imageUrl = media && media.length > 0 ? media[0].url : "placeholder-image.jpg"; // Fallback image
 		const bidCount = _count?.bids || 0;
 
 		const endDate = new Date(endsAt);
 		const formattedDate = endDate.toLocaleString("en-US", {
+			year: "numeric",
 			month: "short",
 			day: "2-digit",
 			hour: "2-digit",
