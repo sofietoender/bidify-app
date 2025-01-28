@@ -1,4 +1,4 @@
-import { apiKey, listingUrl } from "./constants";
+import { apiKey, listingsUrl } from "../../constants/constants";
 
 const placeBidBtn = document.getElementById("placeBidBtn");
 const loginMessage = document.getElementById("loginMessage");
@@ -40,7 +40,7 @@ placeBidBtn.addEventListener("click", async () => {
 
 	try {
 		// Make the POST request to place the bid
-		const response = await fetch(`${listingUrl}/${listingId}/bids`, {
+		const response = await fetch(`${listingsUrl}/${listingId}/bids`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

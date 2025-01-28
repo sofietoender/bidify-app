@@ -1,4 +1,4 @@
-import { apiKey, baseUrl } from "./constants";
+import { apiKey, baseUrl } from "../../constants/constants";
 
 const accessToken = localStorage.getItem("accessToken");
 const username = localStorage.getItem("username");

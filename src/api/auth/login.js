@@ -1,4 +1,4 @@
-import { baseUrl } from "./constants";
+import { loginUrl } from "../../constants/constants";
 
 const form = document.getElementById("loginForm");
 
@@ -11,7 +11,7 @@ form.addEventListener("submit", async (event) => {
 	const data = { email, password };
 
 	try {
-		const response = await fetch(`${baseUrl}/auth/login`, {
+		const response = await fetch(`${loginUrl}`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),

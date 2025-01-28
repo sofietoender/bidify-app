@@ -1,4 +1,4 @@
-import { apiKey, baseUrl, listingUrl } from "./constants";
+import { apiKey, listingsUrl } from "../../constants/constants";
 
 // Get access token from localStorage
 function getAuthToken() {
@@ -45,7 +45,7 @@ export async function createListing(event) {
 	const listingData = { title, description, tags, media, endsAt };
 
 	try {
-		const response = await fetch(`${listingUrl}`, {
+		const response = await fetch(`${listingsUrl}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

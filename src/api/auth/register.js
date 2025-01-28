@@ -1,4 +1,4 @@
-import { baseUrl } from "./constants";
+import { registerUrl } from "../../constants/constants";
 
 // Register form and functionality
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,7 +45,7 @@ async function submitForm(event) {
 
 // Register function
 async function register(user) {
-	const url = `${baseUrl}/auth/register`;
+	const url = `${registerUrl} `;
 
 	const options = {
 		method: "POST",

@@ -1,4 +1,4 @@
-import { listingUrl } from "./constants.js";
+import { listingsUrl } from "../../constants/constants.js";
 import { displayListings } from "./displayData.mjs";
 
 /**
@@ -20,10 +20,10 @@ export async function fetchData(query = "", sortOption = "newest") {
 
 		if (query) {
 			// Uses the search endpoint if there is a query.
-			url = `${listingUrl}/search?q=${encodeURIComponent(query)}&limit=50&page=1&sort=created`;
+			url = `${listingsUrl}/search?q=${encodeURIComponent(query)}&limit=50&page=1&sort=created`;
 		} else {
 			// Uses the regular endpoint without a search query.
-			url = `${listingUrl}?limit=50&page=1&sort=created`;
+			url = `${listingsUrl}?limit=50&page=1&sort=created`;
 		}
 
 		// Adds sorting order based on the selected option.

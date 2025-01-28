@@ -1,4 +1,4 @@
-import { listingUrl } from "./constants.js";
+import { listingsUrl } from "../../constants/constants.js";
 
 export async function fetchListingDetails() {
 	// Get the listing ID from the URL query parameter
@@ -13,7 +13,7 @@ export async function fetchListingDetails() {
 
 	try {
 		// Fetch the listing data using the listing ID
-		const response = await fetch(`${listingUrl}/${listingId}?_bids=true&_seller=true`);
+		const response = await fetch(`${listingsUrl}/${listingId}?_bids=true&_seller=true`);
 
 		if (!response.ok) {
 			throw new Error("Network response was not ok " + response.statusText);
