@@ -4,23 +4,29 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Profile</title>
-		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 	</head>
 	<body class="bg-beige">
 		<div id="navbar-container"></div>
 
-		<div id="profile-container" class="max-w-4xl mx-auto p-6">
+		<div id="profile-container" class="max-w-xl mx-auto mt-6">
 			<!-- Profile Header -->
-			<div class="flex flex-col items-center pb-10">
+			<div class="flex flex-col items-center pb-10 bg-white rounded-md">
 				<div class="relative group">
 					<!-- Banner Image -->
-					<img id="banner" class="w-full h-40 object-cover rounded-lg" src="" alt="Banner Image" />
-					<button id="editBannerBtn" class="absolute top-4 right-4 bg-gray-700 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Edit Banner</button>
+					<img id="banner" class="w-full h-45 object-cover" src="" alt="Banner Image" />
+					<button
+						id="editBannerBtn"
+						class="absolute top-4 right-4 bg-gray-700 text-customblack rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:bg-white"
+					>
+						Edit Banner
+					</button>
 				</div>
 
-				<div id="avatar-container" class="relative group overflow-hidden">
+				<div id="avatar-container" class="relative group overflow-hidden mt-6">
 					<img id="avatar" class="w-24 h-24 mb-3 rounded-full shadow-lg object-cover" src="" alt="User Avatar" />
-					<button id="editAvatarBtn" class="absolute bottom-0 right-0 bg-gray-700 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">Change Avatar</button>
+					<button id="editAvatarBtn" class="absolute bottom-0 right-0 bg-gray-700 text-black rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:bg-white">
+						Change Avatar
+					</button>
 				</div>
 
 				<h5 id="username" class="mb-1 text-xl font-medium text-gray-900 mt-4">User Name</h5>
@@ -28,8 +34,13 @@
 
 				<div class="mt-4">
 					<span class="text-lg font-semibold">Total Credit:</span>
-					<span id="creditAmount" class="text-xl font-medium text-green-600">0</span>
+					<span id="creditAmount" class="text-xl font-medium text-red">0</span>
 				</div>
+			</div>
+
+			<h2 class="text-xl font-bold mt-8 mb-4">Your Wins</h2>
+			<div id="userWins" class="flex flex-wrap gap-6">
+				<!-- User wins will be injected here -->
 			</div>
 
 			<!-- User Listings and Wins -->
@@ -37,11 +48,6 @@
 				<h2 class="text-xl font-bold mb-4">Your Listings</h2>
 				<div id="userListings" class="flex flex-wrap gap-6">
 					<!-- User listings will be injected here -->
-				</div>
-
-				<h2 class="text-xl font-bold mt-8 mb-4">Your Wins</h2>
-				<div id="userWins" class="flex flex-wrap gap-6">
-					<!-- User wins will be injected here -->
 				</div>
 			</div>
 		</div>
