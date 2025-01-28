@@ -1,10 +1,10 @@
-import { baseUrl } from "./constants.js";
+import { listingUrl } from "./constants.js";
 import { displayListings } from "./displayData.mjs";
 
 export async function fetchData(query = "", sortOption = "newest") {
 	try {
 		// Build URL based on search query or no query
-		const url = query ? `${baseUrl}/search?q=${encodeURIComponent(query)}` : baseUrl;
+		const url = query ? `${listingUrl}/search?q=${encodeURIComponent(query)}` : listingUrl;
 
 		const response = await fetch(url);
 		if (!response.ok) {

@@ -1,3 +1,5 @@
+import { apiKey, listingUrl } from "./constants";
+
 const placeBidBtn = document.getElementById("placeBidBtn");
 const loginMessage = document.getElementById("loginMessage");
 const bidAmountInput = document.getElementById("bidAmountInput");
@@ -5,7 +7,6 @@ const bidErrorMessage = document.getElementById("bidErrorMessage");
 const bidSuccessMessage = document.getElementById("bidSuccessMessage");
 
 const accessToken = localStorage.getItem("accessToken");
-const apiKey = "6ec6b26b-2699-4267-a499-2ad741f04936"; // New API key
 
 if (accessToken) {
 	placeBidBtn.classList.remove("hidden");
@@ -39,12 +40,12 @@ placeBidBtn.addEventListener("click", async () => {
 
 	try {
 		// Make the POST request to place the bid
-		const response = await fetch(`https://v2.api.noroff.dev/auction/listings/${listingId}/bids`, {
+		const response = await fetch(`${listingUrl}/${listingId}/bids`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${accessToken}`, // Access token from localStorage
-				"X-Noroff-API-Key": apiKey, // Correct API key header
+				"X-Noroff-API-Key": apiKey,
 			},
 			body: JSON.stringify({ amount: parseFloat(bidAmount) }),
 		});

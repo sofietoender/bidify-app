@@ -1,58 +1,61 @@
-const NOROFF_API_URL = "https://v2.api.noroff.dev";
-const apiKey = "6ec6b26b-2699-4267-a499-2ad741f04936"; // Provided API Key
+import { apiKey, baseUrl } from "./constants";
 
 const accessToken = localStorage.getItem("accessToken");
 const username = localStorage.getItem("username");
 
 if (!accessToken || !username) {
-	console.error("Access token or username is missing. Please log in.");
 	window.location.href = "/login.html";
+}
+
+// Helper function to fetch data from the API
+async function fetchData(url, options) {
+	try {
+		const response = await fetch(url, options);
+		return await response.json();
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
+}
+
+// Helper function to update the DOM with user data
+function updateUserProfile(userData) {
+	document.getElementById("banner").src = userData.banner.url;
+	document.getElementById("avatar").src = userData.avatar.url;
+	document.getElementById("username").textContent = userData.name;
+	document.getElementById("userBio").textContent = userData.bio;
+	document.getElementById("creditAmount").textContent = userData.credits;
 }
 
 // Fetch user data to populate the profile
 async function fetchUserData() {
-	try {
-		const options = {
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-				"X-Noroff-API-Key": apiKey,
-			},
-		};
-
-		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}`, options);
-		const data = await response.json();
-		const userData = data.data;
-
-		document.getElementById("banner").src = userData.banner.url;
-		document.getElementById("avatar").src = userData.avatar.url;
-		document.getElementById("username").textContent = userData.name;
-		document.getElementById("userBio").textContent = userData.bio;
-		document.getElementById("creditAmount").textContent = userData.credits;
-	} catch (error) {
-		console.error("Error fetching user data:", error);
+	const options = {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+			"X-Noroff-API-Key": apiKey,
+		},
+	};
+	const data = await fetchData(`${baseUrl}/auction/profiles/${username}`, options);
+	if (data) {
+		updateUserProfile(data.data);
 	}
 }
 
-// Open modal to update banner or avatar URL
+// Open modal to update banner, avatar, or bio URL
 function openModal(target) {
 	const modal = document.getElementById("modal");
 	modal.classList.remove("hidden");
-	document.getElementById("imageUrl").value = ""; // Clear previous input
-	document.getElementById("bio").value = ""; // Clear bio input
+	document.getElementById("imageUrl").value = "";
+	document.getElementById("bio").value = "";
 
-	if (target === "banner") {
-		document.getElementById("modalTitle").textContent = "Update Banner";
-		modal.dataset.target = "banner";
-		document.getElementById("bioUpdateContainer").classList.add("hidden");
-	} else if (target === "avatar") {
-		document.getElementById("modalTitle").textContent = "Update Avatar";
-		modal.dataset.target = "avatar";
-		document.getElementById("bioUpdateContainer").classList.add("hidden");
-	} else if (target === "bio") {
-		document.getElementById("modalTitle").textContent = "Update Bio";
-		modal.dataset.target = "bio";
-		document.getElementById("bioUpdateContainer").classList.remove("hidden");
-	}
+	const modalTitles = {
+		banner: "Update Banner",
+		avatar: "Update Avatar",
+		bio: "Update Bio",
+	};
+
+	document.getElementById("modalTitle").textContent = modalTitles[target];
+	modal.dataset.target = target;
+	document.getElementById("bioUpdateContainer").classList.toggle("hidden", target !== "bio");
 }
 
 // Close modal
@@ -72,101 +75,73 @@ async function updateProfile(formData) {
 		body: JSON.stringify(formData),
 	};
 
-	try {
-		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}`, options);
-		const data = await response.json();
-
-		if (response.ok) {
-			if (formData.banner) {
-				// Assuming the response contains the updated banner data
-				document.getElementById("banner").src = data.data.banner.url;
-			} else if (formData.avatar) {
-				document.getElementById("avatar").src = data.data.avatar.url;
-			} else if (formData.bio) {
-				document.getElementById("userBio").textContent = data.data.bio;
-			}
-			closeModal();
-		} else {
-			alert("Failed to update profile.");
-		}
-	} catch (error) {
-		console.error("Error updating profile:", error);
+	const data = await fetchData(`${baseUrl}/auction/profiles/${username}`, options);
+	if (data) {
+		if (formData.banner) document.getElementById("banner").src = data.data.banner.url;
+		if (formData.avatar) document.getElementById("avatar").src = data.data.avatar.url;
+		if (formData.bio) document.getElementById("userBio").textContent = data.data.bio;
+		closeModal();
+	} else {
+		alert("Failed to update profile.");
 	}
+}
+
+// Event listeners for opening the modal
+function addEditButtonListener(buttonId, target) {
+	const button = document.getElementById(buttonId);
+	if (button) {
+		button.addEventListener("click", () => openModal(target));
+	}
+}
+
+// Handle the update button click based on the modal target
+async function handleUpdateClick() {
+	const modal = document.getElementById("modal");
+	const target = modal.dataset.target;
+	let formData;
+
+	if (target === "banner" || target === "avatar") {
+		const imageUrl = document.getElementById("imageUrl").value;
+		if (!imageUrl) return alert("Please enter a valid image URL.");
+		formData = { [target]: { url: imageUrl } };
+	} else if (target === "bio") {
+		const bio = document.getElementById("bio").value;
+		if (!bio) return alert("Please enter a valid bio.");
+		formData = { bio };
+	}
+
+	await updateProfile(formData);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 	// Fetch user data to populate the profile
 	fetchUserData();
 
-	// Open modal to update banner or avatar URL
-	const editBannerBtn = document.getElementById("editBannerBtn");
-	if (editBannerBtn) {
-		editBannerBtn.addEventListener("click", () => {
-			openModal("banner");
-		});
-	}
+	// Open modal event listeners
+	addEditButtonListener("editBannerBtn", "banner");
+	addEditButtonListener("editAvatarBtn", "avatar");
+	addEditButtonListener("editBioBtn", "bio");
 
-	const editAvatarBtn = document.getElementById("editAvatarBtn");
-	if (editAvatarBtn) {
-		editAvatarBtn.addEventListener("click", () => {
-			openModal("avatar");
-		});
-	}
-
-	const editBioBtn = document.getElementById("editBioBtn");
-	if (editBioBtn) {
-		editBioBtn.addEventListener("click", () => {
-			openModal("bio");
-		});
-	}
-
-	// Handle the update button click based on the modal target
+	// Update button listener
 	const updateBtn = document.getElementById("updateBtn");
 	if (updateBtn) {
-		updateBtn.addEventListener("click", async () => {
-			const modal = document.getElementById("modal");
-			const target = modal.dataset.target;
-
-			if (target === "banner") {
-				const imageUrl = document.getElementById("imageUrl").value;
-				if (!imageUrl) {
-					alert("Please enter a valid image URL.");
-					return;
-				}
-
-				const formData = { banner: { url: imageUrl } }; // Correct format for banner
-				await updateProfile(formData);
-			} else if (target === "avatar") {
-				const imageUrl = document.getElementById("imageUrl").value;
-				if (!imageUrl) {
-					alert("Please enter a valid image URL.");
-					return;
-				}
-
-				const formData = { avatar: { url: imageUrl } }; // Correct format for avatar
-				await updateProfile(formData);
-			} else if (target === "bio") {
-				const bio = document.getElementById("bio").value;
-				if (!bio) {
-					alert("Please enter a valid bio.");
-					return;
-				}
-
-				const formData = { bio: bio }; // Correct format for bio
-				await updateProfile(formData);
-			}
-		});
+		updateBtn.addEventListener("click", handleUpdateClick);
 	}
 
-	// Handle cancel button click
+	// Cancel button listener
 	const cancelBtn = document.getElementById("cancelBtn");
 	if (cancelBtn) {
 		cancelBtn.addEventListener("click", closeModal);
 	}
+
+	// Fetch user listings
+	fetchUserListings();
+
+	// Fetch user wins
+	fetchUserWins();
 });
 
-// get listing på profile:
-
+// Fetch user listings
 async function fetchUserListings() {
 	const options = {
 		headers: {
@@ -175,45 +150,40 @@ async function fetchUserListings() {
 		},
 	};
 
-	try {
-		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}/listings`, options);
-		const data = await response.json();
-		const listings = data.data;
-
+	const data = await fetchData(`${baseUrl}/auction/profiles/${username}/listings`, options);
+	if (data) {
 		const listingsContainer = document.getElementById("userListings");
 		listingsContainer.innerHTML = "";
 
-		if (!listings.length) {
+		if (!data.data.length) {
 			listingsContainer.innerHTML = "<p class='text-gray-600'>No listings found.</p>";
 			return;
 		}
 
-		listings.forEach((listing) => {
-			const listingElement = document.createElement("div");
-			listingElement.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-64");
-
-			listingElement.innerHTML = `
-				<img src="${listing.media[0]?.url || "https://via.placeholder.com/150"}" alt="${listing.media[0]?.alt || "Listing Image"}" class="w-full h-32 object-cover rounded-md mb-2">
-				<h3 class="text-lg font-bold">${listing.title}</h3>
-				<p class="text-sm text-gray-600">${listing.description || "No description available."}</p>
-				<p class="text-sm font-semibold mt-2">Bids: ${listing._count.bids}</p>
-				<p class="text-sm text-gray-500">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
-			`;
-
+		data.data.forEach((listing) => {
+			const listingElement = createListingElement(listing);
 			listingsContainer.appendChild(listingElement);
 		});
-	} catch (error) {
-		console.error("Error fetching user listings:", error);
 	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	fetchUserListings();
-});
+// Create a listing element for display
+function createListingElement(listing) {
+	const listingElement = document.createElement("div");
+	listingElement.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-64");
 
-// Fetch users wins:
+	listingElement.innerHTML = `
+		<img src="${listing.media[0]?.url}" alt="${listing.media[0]?.alt || "Listing Image"}" class="w-full h-32 object-cover rounded-md mb-2">
+		<h3 class="text-lg font-bold">${listing.title}</h3>
+		<p class="text-sm text-gray-600">${listing.description || "No description available."}</p>
+		<p class="text-sm font-semibold mt-2">Bids: ${listing._count.bids}</p>
+		<p class="text-sm text-gray-500">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
+	`;
 
-// Fetch user wins and display them
+	return listingElement;
+}
+
+// Fetch user wins
 async function fetchUserWins() {
 	const options = {
 		headers: {
@@ -222,38 +192,19 @@ async function fetchUserWins() {
 		},
 	};
 
-	try {
-		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}/wins`, options);
-		const data = await response.json();
-		const wins = data.data;
-
+	const data = await fetchData(`${baseUrl}/auction/profiles/${username}/wins`, options);
+	if (data) {
 		const winsContainer = document.getElementById("userWins");
 		winsContainer.innerHTML = "";
 
-		if (!wins.length) {
+		if (!data.data.length) {
 			winsContainer.innerHTML = "<p class='text-gray-600'>No wins found.</p>";
 			return;
 		}
 
-		wins.forEach((win) => {
-			const winElement = document.createElement("div");
-			winElement.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-64");
-
-			winElement.innerHTML = `
-				<img src="${win.media[0]?.url || "https://via.placeholder.com/150"}" alt="${win.media[0]?.alt || "Winning Image"}" class="w-full h-32 object-cover rounded-md mb-2">
-				<h3 class="text-lg font-bold">${win.title}</h3>
-				<p class="text-sm text-gray-600">${win.description || "No description available."}</p>
-				<p class="text-sm font-semibold mt-2">Bids: ${win._count.bids}</p>
-				<p class="text-sm text-gray-500">Ended: ${new Date(win.endsAt).toLocaleDateString()}</p>
-			`;
-
+		data.data.forEach((win) => {
+			const winElement = createListingElement(win);
 			winsContainer.appendChild(winElement);
 		});
-	} catch (error) {
-		console.error("Error fetching user wins:", error);
 	}
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-	fetchUserWins();
-});

@@ -1,3 +1,5 @@
+import { baseUrl } from "./constants";
+
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (event) => {
@@ -9,7 +11,7 @@ form.addEventListener("submit", async (event) => {
 	const data = { email, password };
 
 	try {
-		const response = await fetch("https://v2.api.noroff.dev/auth/login", {
+		const response = await fetch(`${baseUrl}/auth/login`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(data),
