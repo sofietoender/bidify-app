@@ -55,7 +55,7 @@ function displayListingDetails(listing) {
         <div class="flex">
             <!-- Main Image -->
             <div class="flex-1">
-                <img src="${media && media.length > 0 ? media[0].url : "placeholder-image.jpg"}" alt="${title}" class="w-full border-red border rounded-md h-80 object-cover" />
+                <img src="${media && media.length > 0 ? media[0].url : "placeholder-image.jpg"}" alt="${title}" class="w-full  rounded-md h-80 object-cover" />
             </div>
             <!-- Image Gallery -->
             <div class=" ml-3 flex-1 grid grid-cols-3 gap-2">
@@ -64,7 +64,7 @@ function displayListingDetails(listing) {
 										? media
 												.map(
 													(image) => `
-                    <img src="${image.url}" alt="${title}" class="w-full h-32 object-cover rounded-md border border-red cursor-pointer" />
+                    <img src="${image.url}" alt="${title}" class="w-full h-32 object-cover rounded-md cursor-pointer" />
                 `
 												)
 												.join("")
