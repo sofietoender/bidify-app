@@ -10,7 +10,7 @@ export const apiKey = import.meta.env.VITE_API_KEY;
 
 // POST Create listing: /auction/listings
 
-// POST bid on listing /auction/listings/<id>/bids
+// POST bid on listing /auction/listings/<id>/bid
 
 // PUT Update listing /auction/listings/<id>
 
