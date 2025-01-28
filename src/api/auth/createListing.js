@@ -1,5 +1,4 @@
-const NOROFF_API_URL = "https://v2.api.noroff.dev";
-const apiKey = "6ec6b26b-2699-4267-a499-2ad741f04936"; // Use your actual API key
+import { apiKey, baseUrl } from "./constants";
 
 // Get access token from localStorage
 function getAuthToken() {
@@ -46,7 +45,7 @@ export async function createListing(event) {
 	const listingData = { title, description, tags, media, endsAt };
 
 	try {
-		const response = await fetch(`${NOROFF_API_URL}/auction/listings`, {
+		const response = await fetch(`${baseUrl}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
