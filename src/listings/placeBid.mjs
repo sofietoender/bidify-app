@@ -1,4 +1,4 @@
-import { apiKey, listingsUrl } from "../../constants/constants";
+import { apiKey, listingsUrl } from "../constants/constants";
 
 const placeBidBtn = document.getElementById("placeBidBtn");
 const loginMessage = document.getElementById("loginMessage");
