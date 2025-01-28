@@ -1,3 +1,5 @@
+import { baseUrl } from "./constants";
+
 // Register form and functionality
 document.addEventListener("DOMContentLoaded", () => {
 	const form = document.querySelector("#registerForm");
@@ -41,12 +43,9 @@ async function submitForm(event) {
 	}
 }
 
-// API constants
-const BASE_URL = "https://v2.api.noroff.dev";
-
 // Register function
 async function register(user) {
-	const url = `${BASE_URL}/auth/register`;
+	const url = `${baseUrl}/auth/register`;
 
 	const options = {
 		method: "POST",
