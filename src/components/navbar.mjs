@@ -22,7 +22,7 @@ export function loadNavbar(containerId) {
 	const loggedInLinks = `
 		<a href="/auth/profile/index.html" class="px-3 py-2 text-customblack">Profile</a>
 		<a href="/auctions/newListing/index.html" class="px-3 py-2 text-customblack">Create listing</a>
-		<a href="#" id="logoutButton" class="px-3 py-2 text-customblack">Log out</a>
+		<a href="index.html" id="logoutButton" class="px-3 py-2 text-customblack">Log out</a>
 	`;
 
 	// Navbar links for non-logged-in users
