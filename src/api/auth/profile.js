@@ -164,3 +164,96 @@ document.addEventListener("DOMContentLoaded", () => {
 		cancelBtn.addEventListener("click", closeModal);
 	}
 });
+
+// get listing på profile:
+
+async function fetchUserListings() {
+	const options = {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+			"X-Noroff-API-Key": apiKey,
+		},
+	};
+
+	try {
+		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}/listings`, options);
+		const data = await response.json();
+		const listings = data.data;
+
+		const listingsContainer = document.getElementById("userListings");
+		listingsContainer.innerHTML = "";
+
+		if (!listings.length) {
+			listingsContainer.innerHTML = "<p class='text-gray-600'>No listings found.</p>";
+			return;
+		}
+
+		listings.forEach((listing) => {
+			const listingElement = document.createElement("div");
+			listingElement.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-64");
+
+			listingElement.innerHTML = `
+				<img src="${listing.media[0]?.url || "https://via.placeholder.com/150"}" alt="${listing.media[0]?.alt || "Listing Image"}" class="w-full h-32 object-cover rounded-md mb-2">
+				<h3 class="text-lg font-bold">${listing.title}</h3>
+				<p class="text-sm text-gray-600">${listing.description || "No description available."}</p>
+				<p class="text-sm font-semibold mt-2">Bids: ${listing._count.bids}</p>
+				<p class="text-sm text-gray-500">Ends: ${new Date(listing.endsAt).toLocaleDateString()}</p>
+			`;
+
+			listingsContainer.appendChild(listingElement);
+		});
+	} catch (error) {
+		console.error("Error fetching user listings:", error);
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	fetchUserListings();
+});
+
+// Fetch users wins:
+
+// Fetch user wins and display them
+async function fetchUserWins() {
+	const options = {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+			"X-Noroff-API-Key": apiKey,
+		},
+	};
+
+	try {
+		const response = await fetch(`${NOROFF_API_URL}/auction/profiles/${username}/wins`, options);
+		const data = await response.json();
+		const wins = data.data;
+
+		const winsContainer = document.getElementById("userWins");
+		winsContainer.innerHTML = "";
+
+		if (!wins.length) {
+			winsContainer.innerHTML = "<p class='text-gray-600'>No wins found.</p>";
+			return;
+		}
+
+		wins.forEach((win) => {
+			const winElement = document.createElement("div");
+			winElement.classList.add("bg-white", "p-4", "rounded-lg", "shadow", "w-64");
+
+			winElement.innerHTML = `
+				<img src="${win.media[0]?.url || "https://via.placeholder.com/150"}" alt="${win.media[0]?.alt || "Winning Image"}" class="w-full h-32 object-cover rounded-md mb-2">
+				<h3 class="text-lg font-bold">${win.title}</h3>
+				<p class="text-sm text-gray-600">${win.description || "No description available."}</p>
+				<p class="text-sm font-semibold mt-2">Bids: ${win._count.bids}</p>
+				<p class="text-sm text-gray-500">Ended: ${new Date(win.endsAt).toLocaleDateString()}</p>
+			`;
+
+			winsContainer.appendChild(winElement);
+		});
+	} catch (error) {
+		console.error("Error fetching user wins:", error);
+	}
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	fetchUserWins();
+});
