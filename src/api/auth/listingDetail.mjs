@@ -31,7 +31,7 @@ export async function fetchListingDetails() {
 }
 
 function displayListingDetails(listing) {
-	const { title, media, _count, endsAt, description, price, bids } = listing; // Destructure the listing
+	const { title, media, _count, endsAt, description, price, bids, seller } = listing; // Destructure the listing
 	const bidCount = _count?.bids || 0;
 	const endDate = new Date(endsAt);
 	const formattedDate = endDate.toLocaleString("en-US", {
@@ -82,6 +82,7 @@ function displayListingDetails(listing) {
             <div>
                 <p class="text-xs text-brown">Bids: ${bidCount}</p>
                 <p class="text-xs font-semibold text-customblack mt-1">Ends: ${formattedDate}</p>
+				<p class="text-xs font-semibold text-customblack mt-1">Seller: ${seller.name}</p>
             </div>
 			
             <div class="bg-brown rounded-full p-0.5 w-[80px]">
