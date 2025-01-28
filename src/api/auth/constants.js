@@ -1,6 +1,6 @@
 export const baseUrl = "https://v2.api.noroff.dev";
 export const listingUrl = `${baseUrl}/auction/listings`;
-export const apiKey = "6ec6b26b-2699-4267-a499-2ad741f04936"; // Use your actual API key
+export const apiKey = import.meta.env.VITE_API_KEY;
 
 // LISTINGS
 // GET all listings (homepage): /auction/listings
