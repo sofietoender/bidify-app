@@ -31,7 +31,7 @@ form.addEventListener("submit", async (event) => {
 			localStorage.setItem("username", name);
 			console.log("Access token and username saved:", accessToken, name);
 
-			window.location.href = "feed/index.html";
+			window.location.href = "../profile/index.html";
 		} else {
 			console.error("Access token or name is missing in the response.");
 		}
