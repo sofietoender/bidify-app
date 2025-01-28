@@ -1,4 +1,4 @@
-import { apiKey, listingsUrl } from "../../constants/constants";
+import { apiKey, listingsUrl } from "../constants/constants";
 
 // Get access token from localStorage
 function getAuthToken() {
