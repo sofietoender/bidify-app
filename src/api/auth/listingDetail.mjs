@@ -120,7 +120,4 @@ function displayListingDetails(listing) {
 	}
 }
 
-// Call the function when the page loads
-// document.addEventListener("DOMContentLoaded", fetchListingDetails);
-
 fetchListingDetails();

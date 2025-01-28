@@ -2,16 +2,29 @@ import "./style.css";
 import { loadNavbar } from "../src/components/navbar.mjs";
 import { fetchData, addSearchListener, addSortListener } from "./api/auth/fetchData.mjs";
 
-document.addEventListener("DOMContentLoaded", async () => {
-	try {
-		// Load the navbar
-		loadNavbar("navbar-container");
+function router() {
+	loadNavbar("navbar-container");
 
-		// Fetch data and initialize listeners after DOM content is loaded
-		await fetchData();
-		addSearchListener();
-		addSortListener();
-	} catch (error) {
-		console.error("Error during DOMContentLoaded:", error);
+	const path = window.location.pathname.replace(/\/$/, "");
+
+	switch (path) {
+		case "":
+		case "/index.html":
+			fetchData();
+			addSearchListener();
+			addSortListener();
+			break;
+
+		case "/auth/profile":
+		case "/auth/login":
+		case "/auth/register":
+		case "/auctions/newListing":
+		case "/auctions/listingDetail":
+			break;
+
+		default:
+			console.warn("Unhandled route:", path);
 	}
-});
+}
+
+document.addEventListener("DOMContentLoaded", router);
