@@ -1,7 +1,3 @@
-// export const baseUrl = "https://v2.api.noroff.dev";
-// export const listingUrl = `${baseUrl}/auction/listings`;
-// export const apiKey = import.meta.env.VITE_API_KEY;
-
 // Base URL for API
 export const baseUrl = "https://v2.api.noroff.dev";
 
