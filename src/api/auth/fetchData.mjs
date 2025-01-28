@@ -3,8 +3,18 @@ import { displayListings } from "./displayData.mjs";
 
 export async function fetchData(query = "", sortOption = "newest") {
 	try {
-		// Build URL based on search query or no query
-		const url = query ? `${listingUrl}/search?q=${encodeURIComponent(query)}` : listingUrl;
+		let url;
+
+		if (query) {
+			// Bruker search-endepunktet hvis det er et søk
+			url = `${listingUrl}/search?q=${encodeURIComponent(query)}&limit=50&page=1&sort=created`;
+		} else {
+			// Bruker det vanlige endepunktet uten søk
+			url = `${listingUrl}?limit=50&page=1&sort=created`;
+		}
+
+		// Legger til sorteringsrekkefølge
+		url += sortOption === "newest" ? `&sortOrder=desc` : `&sortOrder=asc`;
 
 		const response = await fetch(url);
 		if (!response.ok) {
@@ -13,20 +23,13 @@ export async function fetchData(query = "", sortOption = "newest") {
 
 		const { data } = await response.json();
 
-		// Filter for active listings (those that haven't ended yet)
+		// Filtrer for aktive oppføringer (de som ikke har utløpt ennå)
 		const activeListings = data.filter((listing) => {
 			const endDate = new Date(listing.endsAt);
 			return endDate > new Date();
 		});
 
-		// Sort based on the selected option (newest or oldest)
-		const sortedListings = activeListings.sort((a, b) => {
-			const dateA = new Date(a.created);
-			const dateB = new Date(b.created);
-			return sortOption === "newest" ? dateB - dateA : dateA - dateB;
-		});
-
-		displayListings(sortedListings);
+		displayListings(activeListings);
 	} catch (error) {
 		console.error("Fetch error:", error.message);
 	}
