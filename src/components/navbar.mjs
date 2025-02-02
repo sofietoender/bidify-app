@@ -43,11 +43,11 @@ export function loadNavbar(containerId) {
 					</button>
 				</div>
 				<div class="hidden space-x-4 lg:flex">
-					${accessToken ? loggedInLinks : loggedOutLinks} <!-- Conditionally render links based on login status -->
+					${accessToken ? loggedInLinks : loggedOutLinks} 
 				</div>
 			</div>
 			<div id="mobileMenu" class="hidden p-4 lg:hidden items-center">
-				${accessToken ? loggedInLinks : loggedOutLinks} <!-- Conditionally render links based on login status -->
+				${accessToken ? loggedInLinks : loggedOutLinks} 
 			</div>
 		</nav>
 	`;
