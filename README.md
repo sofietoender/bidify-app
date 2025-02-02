@@ -23,15 +23,13 @@ Ensure you have the following installed on your system:
 - [Node.js](https://nodejs.org/) (Recommended: latest LTS version)
 - [npm](https://www.npmjs.com/)
 
-## Getting Started
-
 ### 1. Clone the Repository
 
 ```sh
-git clone <repository-url>
-```
+git clone https://github.com/sofietoender/bidify-app.git
 
-````
+
+```
 
 ### 2. Install Dependencies
 
@@ -63,14 +61,15 @@ npm run build
 
 ## Resources
 
-| Resource             | URL                                                                                                       |
-| -------------------- | --------------------------------------------------------------------------------------------------------- |
-| **Gantt Chart**      | (https://github.com/users/sofietoender/projects/5/views/4)                                                |
-| **Design Prototype** | (https://www.figma.com/proto/c4t6f70p66UKaoreHDeKOd/Semester-project-2?node-id=0-1&t=cJ1irrTGJMH0TL3m-1)  |
-| **Style Guide**      | (https://www.figma.com/design/c4t6f70p66UKaoreHDeKOd/Semester-project-2?node-id=0-1&t=cJ1irrTGJMH0TL3m-1) |
-| **Kanban Board**     | (https://github.com/users/sofietoender/projects/5/views/1)                                                |
-| **Repository**       | (https://github.com/sofietoender/bidify-app.git)                                                          |
-| **Hosted Demo**      | (https://bidify-sofie.netlify.app/)                                                                       |
+| Resource             | URL                                                                                                                        |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Gantt Chart**      | [Gantt Chart](https://github.com/users/sofietoender/projects/5/views/4)                                                    |
+| **Design Prototype** | [Design Prototype](https://www.figma.com/proto/c4t6f70p66UKaoreHDeKOd/Semester-project-2?node-id=0-1&t=cJ1irrTGJMH0TL3m-1) |
+| **Style Guide**      | [Style Guide](https://www.figma.com/design/c4t6f70p66UKaoreHDeKOd/Semester-project-2?node-id=0-1&t=cJ1irrTGJMH0TL3m-1)     |
+| **Kanban Board**     | [Kanban Board](https://github.com/users/sofietoender/projects/5/views/1)                                                   |
+| **Repository**       | [Repository](https://github.com/sofietoender/bidify-app.git)                                                               |
+| **Hosted Demo**      | [Hosted Demo](https://bidify-sofie.netlify.app/)                                                                           |
 
+```
 
-````
+```
