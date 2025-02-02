@@ -69,7 +69,3 @@ npm run build
 | **Kanban Board**     | [Kanban Board](https://github.com/users/sofietoender/projects/5/views/1)                                                   |
 | **Repository**       | [Repository](https://github.com/sofietoender/bidify-app.git)                                                               |
 | **Hosted Demo**      | [Hosted Demo](https://bidify-sofie.netlify.app/)                                                                           |
-
-```
-
-```
