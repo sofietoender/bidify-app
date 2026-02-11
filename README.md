@@ -1,4 +1,4 @@
-# Auction Website – Semester Project 2
+# Auction Website – Semester Project 2 - Bidify
 
 <p align="center">
   <img src="./assets/bidify-mock.png" width="900"/>
