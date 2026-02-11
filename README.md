@@ -1,10 +1,24 @@
-# Auction Website - Semester Project 2
+# Auction Website – Semester Project 2
 
-This project is built as part of the **Noroff Front-end Development Semester Project 2**. The was is to create an auction website where users can bid on items and list their own items for auction.
+This project is built as part of the **Noroff Front-end Development Semester Project 2**. The goal was to create an auction website where users can bid on items and list their own items for auction.
+
+---
 
 ## Project Description
 
 An auction website where users can add items to be bid on and bid on items listed by other users. When a new user joins the website, they receive 1000 credits, which they can use to place bids. Non-registered users can search through the listings, but only registered users can make bids.
+
+---
+
+## Built With
+
+* HTML
+* Tailwind
+* JavaScript
+* Vite
+* Noroff API
+
+---
 
 ## Resources
 
@@ -17,55 +31,73 @@ An auction website where users can add items to be bid on and bid on items liste
 | **Repository**       | [Repository](https://github.com/sofietoender/bidify-app.git)                                                               |
 | **Hosted Demo**      | [Hosted Demo](https://bidify-sofie.netlify.app/)                                                                           |
 
-### Key Features:
+---
 
-- **Register**: Users with a `stud.noroff.no` email can register.
-- **Login/Logout**: Registered users can log in and out.
-- **User Profile**: Users can update their avatar and view their total credit.
-- **Create Listings**: Registered users can create a listing with a title, deadline date, media gallery, and description.
-- **Place Bids**: Registered users can place bids on listings created by others.
-- **View Bids**: Registered users can view bids made on a listing.
-- **Search Listings**: Unregistered users can search through listings.
+## Key Features
 
-## Prerequisites
+* Register (stud.noroff.no email required)
+* Login / Logout
+* Update user avatar
+* View total credit
+* Create auction listings
+* Place bids
+* View bids
+* Search listings
 
-Ensure you have the following installed on your system:
+---
 
-- [Node.js](https://nodejs.org/) (Recommended: latest LTS version)
-- [npm](https://www.npmjs.com/)
+## Getting Started
 
-### 1. Clone the Repository
+### Prerequisites
 
-```sh
+* Node.js (latest LTS recommended)
+* npm
+
+### Installing
+
+Clone the repository:
+
+```bash
 git clone https://github.com/sofietoender/bidify-app.git
-
-
 ```
 
-### 2. Install Dependencies
+Install dependencies:
 
-```sh
+```bash
 npm install
 ```
 
-### 3. Create an `.env` File
+---
 
-Create a file named `.env` in the root of your project and add the following line (replace `your-api-key` with your actual API key):
+### Running
+
+Create an `.env` file in the root folder and add:
 
 ```env
 VITE_API_KEY=your-api-key
 ```
 
-You can generate your own API key here: [Noroff API Key Documentation](https://docs.noroff.dev/docs/v2/auth/api-key).
+Start the development server:
 
-### 4. Start the Development Server
-
-```sh
+```bash
 npm run dev
 ```
 
-### 5. Build for Production
+Build for production:
 
-```sh
+```bash
 npm run build
 ```
+---
+
+## Contact
+
+GitHub: [https://github.com/sofietoender](https://github.com/sofietoender)
+
+---
+
+## License
+
+This project was created as part of the Noroff Front-end Development program.
+
+---
