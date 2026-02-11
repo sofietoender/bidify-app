@@ -1,5 +1,9 @@
 # Auction Website – Semester Project 2
 
+<p align="center">
+  <img src="./assets/bidify-mock.png" width="900"/>
+</p>
+
 This project is built as part of the **Noroff Front-end Development Semester Project 2**. The goal was to create an auction website where users can bid on items and list their own items for auction.
 
 ---
@@ -12,11 +16,11 @@ An auction website where users can add items to be bid on and bid on items liste
 
 ## Built With
 
-* HTML
-* Tailwind
-* JavaScript
-* Vite
-* Noroff API
+- HTML
+- Tailwind
+- JavaScript
+- Vite
+- Noroff API
 
 ---
 
@@ -35,14 +39,14 @@ An auction website where users can add items to be bid on and bid on items liste
 
 ## Key Features
 
-* Register (stud.noroff.no email required)
-* Login / Logout
-* Update user avatar
-* View total credit
-* Create auction listings
-* Place bids
-* View bids
-* Search listings
+- Register (stud.noroff.no email required)
+- Login / Logout
+- Update user avatar
+- View total credit
+- Create auction listings
+- Place bids
+- View bids
+- Search listings
 
 ---
 
@@ -50,8 +54,8 @@ An auction website where users can add items to be bid on and bid on items liste
 
 ### Prerequisites
 
-* Node.js (latest LTS recommended)
-* npm
+- Node.js (latest LTS recommended)
+- npm
 
 ### Installing
 
@@ -88,6 +92,7 @@ Build for production:
 ```bash
 npm run build
 ```
+
 ---
 
 ## Contact
